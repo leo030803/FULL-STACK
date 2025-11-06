@@ -17,7 +17,13 @@ app.get("/", (request, response) => {
 
 app.post("/cadastrar", (request,response) => {
 
-    console.log(request.body)
+    const { name, email, age, nickname, password } = request.body.user
+
+    console.log(`${name}, ${email}, ${age}, ${nickname}, ${password}`)
+
+    // cadastrar o backend
+
+    response.status(201).json({ message: "Usuário cadastrado com sucesso!" })
 
 
 } )
