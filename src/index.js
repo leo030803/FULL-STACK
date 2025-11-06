@@ -14,6 +14,13 @@ app.get("/", (request, response) => {
 
 })
 
+app.post("/cadastrar", (request,response) => {
+
+    console.log(request)
+
+
+} )
+
 app.listen(port, () => {
 
     console.log(`Servidor rodando na porta ${port}!`)
