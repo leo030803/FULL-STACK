@@ -6,6 +6,7 @@ const app = express()
 const port = 3333
 
 app.use(cors())
+app.use(express.json())
 
 // GET, POST, DELETE, PATCH, PUT
 
@@ -16,7 +17,7 @@ app.get("/", (request, response) => {
 
 app.post("/cadastrar", (request,response) => {
 
-    console.log(request)
+    console.log(request.body)
 
 
 } )
