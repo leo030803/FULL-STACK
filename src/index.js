@@ -1,5 +1,6 @@
 import express, { request, response } from "express"
 import cors from "cors"
+import { persons } from "./persons.js"
 
 const app = express()
 const port = 3333
@@ -9,7 +10,7 @@ app.use(cors())
 // GET, POST, DELETE, PATCH, PUT
 
 app.get("/", (request, response) => {
-    response.json({ message: "Só sei, que nada sei." })
+    response.json(persons)
 
 })
 
