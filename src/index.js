@@ -66,6 +66,40 @@ app.post("/cadastrar", (request,response) => {
     })
 
 
+  // rota para o login
+  app.post("/login", (request, response) => {
+
+    const { email, password} = response.body.user
+
+    // selecionar no banco o usuário que contém o email compatível
+
+    const selectCommand = "SELECT * FROM leonardobraga_02ta WHERE email = ?"
+
+    database.query(selectCommand, [email], (error, user) => {
+       
+      if (error) {
+
+       console.log(error)
+       return
+
+      }
+
+      // user => array [ {name, email} ]
+      // tamanho do array = array.lenght = user.lenght = 1
+
+      // verificar se o usuário existe e se a senha está incorreta
+       
+       if (user.length === 0 || user(0).password !== password) {
+          
+        response.json({ message: "Usuário ou senha incorretos!"})
+
+       }
+
+    })
+
+  })
+
+
 
 
 
