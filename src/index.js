@@ -69,7 +69,7 @@ app.post("/cadastrar", (request,response) => {
   // rota para o login
   app.post("/login", (request, response) => {
 
-    const { email, password} = response.body.user
+    const { email, password} = request.body.user
 
     // selecionar no banco o usuário que contém o email compatível
 
@@ -92,8 +92,17 @@ app.post("/cadastrar", (request,response) => {
        if (user.length === 0 || user(0).password !== password) {
           
         response.json({ message: "Usuário ou senha incorretos!"})
-
+         
+         return
        }
+
+       response.json({
+        
+        id: user[0].id,
+        name: user[0].name
+
+
+       }) 
 
     })
 
